@@ -5,7 +5,6 @@ set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_C_COMPILER clang)
 set(CMAKE_CXX_COMPILER clang++)
 
-
 add_executable(lexer src/main.cxx)
 
 target_include_directories(lexer PRIVATE lib/)
