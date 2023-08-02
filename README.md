@@ -52,7 +52,6 @@ ayoubprogramming95@gmail.com
 Or on Discord:
 
 Username : Ayoub Coding#1225
-
 Donate :
 
 Payeer : ```P1098557175``` 
