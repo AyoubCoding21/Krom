@@ -1,0 +1,3 @@
+/home/ayoub/Krom/build/CMakeFiles/lexer.dir
+/home/ayoub/Krom/build/CMakeFiles/edit_cache.dir
+/home/ayoub/Krom/build/CMakeFiles/rebuild_cache.dir
