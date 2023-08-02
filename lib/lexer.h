@@ -1,39 +1,47 @@
+// Include guards
 #ifndef LEXER_H
 #define LEXER_H
 
+// Including necesary libs
 #include <vector>
 #include "token.h"
 
+// Namespace and class definition
 namespace lexer {
 
-class Lexer {
-public:
-    Lexer(const std::vector<char>& input);
-
-    void read_char();
-    void skip_whitespace();
-    Token next_token();
-
-    char get_ch() const;
-    size_t get_position() const;
-    size_t get_read_position() const;
-
-private:
-    std::vector<char> input;
-    size_t position;
-    size_t read_position;
-    char ch;
-
-    static bool is_letter(char ch);
-    static bool is_digit(char ch);
-};
+	class Lexer {
+		public:
+		    Lexer(const std::vector<char>& input);
+		
+		    void read_char();
+		    void skip_whitespace();
+		    Token next_token();
+		
+		    char get_ch() const;
+		    size_t get_position() const;
+		    size_t get_read_position() const;
+		
+		private:
+		    std::vector<char> input;
+		    size_t position;
+		    size_t read_position;
+		    char ch;
+		
+		    static bool is_letter(char ch);
+		    static bool is_digit(char ch);
+	};
 
 } // namespace lexer
 
 namespace lexer {
-
+	// Variables in-class (we put inline because they are in a header)
 	inline Lexer::Lexer(const std::vector<char>& input) : input(input), position(0), read_position(0), ch('0') {}
 
+	/*
+ 		@function read_char
+   		@args none
+     		@usage read a character from read_position in the class
+	*/
 	inline void Lexer::read_char() {
 	    if (read_position >= input.size()) {
 	        ch = '0';
@@ -41,17 +49,28 @@ namespace lexer {
 	        ch = input[read_position];
 	    }
 	    position = read_position;
+	    // We go to the next position
 	    read_position = read_position + 1;
 	}
 
+	/*
+ 		@function skip_whitespace
+   		@args none
+     		@usage skips a space or \n or \t or \r in the provided input
+	*/
 	inline void Lexer::skip_whitespace() {
 	    char ch = this->ch;
 	    if (ch == ' ' || ch == '\t' || ch == '\n' || ch == '\r') {
 	        read_char();
 	    }
 	}
-
+	/*
+ 		@function next_token
+   		@args none
+     		@usage goes to the next token
+	*/
 	inline Token Lexer::next_token() {
+	    // Indentifier to read
 	    auto read_identifier = [this]() -> std::vector<char> {
 	        size_t position = this->position;
 	        while (this->position < this->input.size() && is_letter(this->ch)) {
@@ -59,7 +78,7 @@ namespace lexer {
 	        }
 	        return std::vector<char>(this->input.begin() + position, this->input.begin() + this->position);
 	    };
-
+	    // Number to read
 	    auto read_number = [this]() -> std::vector<char> {
 	        size_t position = this->position;
 	        while (this->position < this->input.size() && is_digit(this->ch)) {
@@ -67,7 +86,7 @@ namespace lexer {
 	        }
 	        return std::vector<char>(this->input.begin() + position, this->input.begin() + this->position);
 	    };
-
+	    // Define token
 	    Token tok;
 	    skip_whitespace();
 	    switch (ch) {
