@@ -67,6 +67,7 @@ namespace lexer {
 	/*
  		@function next_token
    		@args none
+     		@returns Token antity
      		@usage goes to the next token
 	*/
 	inline Token Lexer::next_token() {
@@ -88,7 +89,9 @@ namespace lexer {
 	    };
 	    // Define token
 	    Token tok;
+	    // Skip any space
 	    skip_whitespace();
+	    // Check if the character is equal to a token, therefore return a token type defined in "token.h"
 	    switch (ch) {
 	        case '=':
 	            tok = Token::ASSIGN;
@@ -136,6 +139,7 @@ namespace lexer {
 	            tok = Token::EOF_;
 	            break;
 	        default:
+		    // If none of these conditions are followed, read identifier and return wether indentation mark, integer or error.
 	            if (is_letter(ch)) {
 	                std::vector<char> ident = read_identifier();
 	                try {
@@ -151,26 +155,53 @@ namespace lexer {
 	            }
 	            break;
 	    }
+	    // Read the character
 	    read_char();
+	    // Return token
 	    return tok;
 	}
-
+	/*
+ 		@function get_ch
+   		@args none
+     		@returns character gotten
+     		@usage gets a character
+	*/
 	inline char Lexer::get_ch() const {
 	    return ch;
 	}
-
+	/*
+ 		@function get_position
+   		@args none
+     		@returns position
+     		@usage gets the position of that character
+	*/
 	inline size_t Lexer::get_position() const {
 	    return position;
 	}
-
+	/*
+ 		@function get_read_position
+   		@args none
+     		@returns read_position
+     		@usage gets the position of the character reader
+	*/
 	inline size_t Lexer::get_read_position() const {
 	    return read_position;
 	}
-
+	/*
+ 		@function is_letter
+   		@args character
+     		@returns bool
+     		@usage check if ch is a letter
+	*/
 	inline bool Lexer::is_letter(char ch) {
 	    return ('a' <= ch && ch <= 'z') || ('A' <= ch && ch <= 'Z') || ch == '_';
 	}
-
+	/*
+ 		@function is_digit
+   		@args character
+     		@returns bool
+     		@usage check if ch is a digit
+	*/
 	inline bool Lexer::is_digit(char ch) {
 	    return '0' <= ch && ch <= '9';
 	}
