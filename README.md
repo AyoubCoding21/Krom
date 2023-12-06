@@ -51,7 +51,7 @@ ayoubprogramming95@gmail.com
 
 Or on Discord:
 
-Username : Ayoub Coding#1225
+Username : ayoubxoding
 
 Donate :
 
