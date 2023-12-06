@@ -8,7 +8,7 @@ A lexer is a fundemantal part of a compiler that transforms source code characte
 
 # How this lexer is written ?
 
-This lexer is written in *pure* C without any high-level abstraction like LLVM or Lex or any other library, also, the binary is kept as an asset.
+This lexer is written in *pure* C without any high-level abstraction like LLVM or Lex or any other library.
 
 # How to run the lexer
 
