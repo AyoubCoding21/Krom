@@ -4,7 +4,7 @@
 
 // Including necesary libs
 #include <vector>
-#include "token.hpp"
+#include "token.h"
 
 // Namespace and class definition
 namespace lexer {
