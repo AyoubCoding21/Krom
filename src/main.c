@@ -1,6 +1,6 @@
 // Including libraries
 #include <stdio.h>
-#include "../lib/lexer.h"
+#include "../lib/lexer.hpp"
 
 int main() {
     // Source code input
