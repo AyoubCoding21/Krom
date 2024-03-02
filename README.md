@@ -1,60 +1,83 @@
-# Krom
+# The Krom Programming Language
+**_Built from the ground up to be fast, concise and intuitive._**
 
-Krom is a hand-written *lexer* in C based-off the Monkey programming language.
+Based off Sophie Winter's Pinecone archived repo and William Savage's vim config for the coding language.
 
-# WTF is a Lexer ?
+Krom is a new compiled programming language. Its goal is to combine the simplicity of a dynamic language with the performance of a compiled one.
 
-A lexer is a fundemantal part of a compiler that transforms source code character by character into tokens such as keywords, identifiers, literals, operators, and symbols. These tokens serve as input for the next stage of the compiler or interpreter, known as the parser.
+It can also interop and transpile into C++ code.
 
-# How this lexer is written ?
+__If you want to program in Krom now, see the [tutorials](tutorials/index.md) for how to get started.__
 
-This lexer is written in *pure* C without any high-level abstraction like LLVM or Lex or any other library.
+## Example
+Here is the common demo program FizzBuzz written in Krom. It prints the numbers from 1 to 20, but it prints "Fizz" if the number is divisible by 3, "Buzz" if it is divisable by 5 and "FizzBuzz" if it is divisible by both. You can find more samples in the [examples directory](https://github.com/AyoubCoding21/Krom/tree/master/examples) or the [tutorials](https://github.com/AyoubCoding21/Krom/tree/master/tutorials).
 
-# How to run the lexer
+```
+# FizzBuzz
 
-To run the lexer run this :
+# call the function defined below
+fizzBuzz: 1, 20
 
-*Arch users :*
+# define the FizzBuzz function
+fizzBuzz :: {start: Int, end: Int}: (
 
-```sh
-sudo pacman -Sy git cmake clang
-git clone https://github.com/AyoubCoding21/Krom
-cd Krom
-chmod u+x build.sh && ./build.sh
+	# loop i from start to end
+	i: in.start | i <= in.end | i: i+1 @ (
+
+		# use conditionals to print the right thing
+
+		i % 3 = 0 && i % 5 = 0 ?
+			print: "FizzBuzz"
+		|
+		i % 3 = 0 ?
+			print: "Fizz"
+		|
+		i % 5 = 0 ?
+			print: "Buzz"
+		|
+			print: i
+	)
+)
 ```
 
-*Termux users :*
+## Why?
+This is probably the most common reaction to hearing about a new language. I realize that there are a __lot__ of programming languages, and that the reason for that is that there are so many assholes like me who keep making them. I do truly think, though, that Krom fills a previously empty niche.
 
-```sh
-pkg upgrade -y && pkg install clang git cmake -y --no-install-recommends
-git clone https://github.com/AyoubCoding21/Krom
-cd Krom
-bash build.sh
-```
+Krom aims to have similar capabilities to modern object oriented compiled languages such as C++, Swift and Rust. It's primary attraction is the simplicity and consistency of it's syntax. Here are some examples of how Krom is different from other popular languages:
 
-*Debian-based users :*
+* Variable creation is implicit, just set a variable and it is created.
+* Variables are statically typed, but type deduction is automatic.
+* Calling a function that takes no arguments is the same syntax as accessing a variable (just writing it's name).
+* Calling a function that takes one argument is the same syntax as setting or creating a variable (`funcOrVar: input`).
+* Calling a function that takes multiple arguments is the same syntax as setting or creating a tuple (`funcOrTuple: input1, input2`).
+* White space is ignored _and_ semicolons are not necessary
+* `:` is used for assignment, which leaves `=` free for comparison, rather than the often confusing `==`.
+* Tuples, structs and classes are all basically the same thing
+* Functions can be sent arguments from the left side, right side or both (`inputLeft.function: inputRight`), which is used for class methods but can also allow you to define functions for any type (even primitive).
+* Program control is done with operators instead of keywords (`?` instead of `if`)
 
-```sh
-sudo apt install git cmake clang -y --no-install-recommends
-git clone https://github.com/AyoubCoding21/Krom
-cd Krom
-bash build.sh
-```
+## Compatibility
+Krom currently requires zero external dependencies. You will need a C++ compiler to build it, and the process is easier with GCC and Make. Krom has been successfully tested on Linux, MacOS and Windows.
 
-# Contribution
+## Current State
+The features that are currently implemented are as follows:
 
-If you got any issues, please tell us.
+* Primitive data types `Bool`, `Int` and `Dub`
+* All the operators you would expect (`+`, `*`, `%`, `:`, `=`, `>`, `<=`, `&&`, etc.)
+* Single and multi line comments
+* Flow control (if, if/else, while loop, for loop)
+* Constants
+* Data structs
+* Tuples
+* Int arrays
+* Functions
+* Strings and various String operations
+* User input
+* Running system commands
+* Interpreter for rapid development and simplicity
+* Transpiler to C++ for max performance
+* Whatev type (equivalent to templates or generics in other languages)
+* Operator overloading
 
-This is just a lexer, and we want to upgrade to an AST generator then compiler/interpreter. So if any of you wants to contribute to this coding language. Please contact me on this e-mail : 
-
-ayoubprogramming95@gmail.com
-
-Or on Discord:
-
-Username : ayoubxoding
-
-Donate :
-
-Payeer : ```P1098557175``` 
-
-See you guys !!
+## Contributing
+Pull requests and contributions are welcome.
