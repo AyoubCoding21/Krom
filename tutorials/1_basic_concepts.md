@@ -14,7 +14,7 @@ That's all you need in your file. No includes or boilerplate code of any sort. J
 
 __Dub__ is the same as a C++ double. It can hold decimal numbers. a Dub literal either ends with a d (ex: `47d`) or has a decimal point (ex: `47.0`). _NOTE: while a Dub literal can start with a decimal point, it can not end with one (ex: `.5` is valid but `5.` is not )_.
 
-A __Bool__ can only be `tru` or `fls`. If you think it should be `true` and `false` instead, you can email your complaints to williamwold@idontgiveafuck.com.
+A __Bool__ can only be `tru` or `fls`. If you think it should be `true` and `false` instead, you can email your complaints to ayoublakrad@idontgiveafuck.com.
 
 A __String__ isn't really a primitive data type, but it is very common so I'll include it here anyway. It is a series of letters, numbers or other characters of any length. You make a string by surrounding text in double quotes.
 
