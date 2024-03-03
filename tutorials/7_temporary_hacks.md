@@ -29,7 +29,7 @@ As of this version, strings work and the printc function is deprecated. It will 
 Getting string input works great (see string tutorial). Int input is not yet standardized, but you can call the function `inputInt` to get a number from the user.
 
 ## imports
-Importing works similar to how it does in Python. It simply dumps another file into your current file. Right now, the import syntx is
+Importing works similar to how it does in Python. It simply dumps another file into your current file. Right now, the import syntax is :
 
 ```
 ==> "path/to/target/file/from/current/file.kdev"
