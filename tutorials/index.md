@@ -1,6 +1,6 @@
-# Pinecone Tutorial Index
+# Krom Tutorial Index
 
-[About Pinecone](../readme.md)
+[About Krom](../README.md)
 
 [0. Setting Up](0_setting_up.md)
 
